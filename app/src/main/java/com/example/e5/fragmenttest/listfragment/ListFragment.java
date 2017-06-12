@@ -42,6 +42,7 @@ public class ListFragment extends Fragment implements View.OnClickListener,Adapt
         switch (view.getId()){
             case R.id.addcontact:{
                 sContacts.add("联系人"+(sContacts.size()+1));
+                ((ListClickCallBack)getActivity()).newContact(sContacts.size());
                 adapter.notifyDataSetChanged();
                 break;
             }
@@ -50,9 +51,10 @@ public class ListFragment extends Fragment implements View.OnClickListener,Adapt
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        ((ItemClickCallBack)getActivity()).onItemClick(i);
+        ((ListClickCallBack)getActivity()).onItemClick(i+1);
     }
-    public interface ItemClickCallBack{
+    public interface ListClickCallBack{
         void onItemClick(int position);
+        void newContact(int postition);
     }
 }

@@ -12,9 +12,18 @@
        android:layout_width="0dp"
        android:layout_weight="3"
        android:layout_height="match_parent" />
-    <FrameLayout
-        android:id="@+id/msg_frame"
+    <RelativeLayout
         android:layout_width="0dp"
         android:layout_weight="5"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:id="@+id/msg_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+        <FrameLayout
+            android:id="@+id/msg_frame"
+            android:layout_below="@+id/msg_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
 </LinearLayout>

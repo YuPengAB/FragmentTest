@@ -22,31 +22,20 @@ import java.util.List;
  */
 
 public class MsgFragment extends Fragment implements View.OnClickListener{
-    View sView;
+    View View;
     ListView vMsgs;
     ArrayAdapter<String> adapter;
     List<String> sMsgs = new ArrayList<>(0);
-    List<String> cMsgs;
     EditText msg;
-    TextView name;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        sView = inflater.inflate(R.layout.msg_frame_layout,container,false);
+        View = inflater.inflate(R.layout.msg_frame_layout,container,false);
         adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,android.R.id.text1,sMsgs);
-        vMsgs = (ListView)sView.findViewById(R.id.msgs);
+        vMsgs = (ListView)View.findViewById(R.id.msgs);
         vMsgs.setAdapter(adapter);
-        msg = (EditText)sView.findViewById(R.id.sendmsg);
-        name = (TextView)sView.findViewById(R.id.name);
-        sView.findViewById(R.id.send).setOnClickListener(this);
-        return sView;
-    }
-    public void init(Msg msg){
-        cMsgs = msg.msgs;
-        sMsgs.clear();
-        sMsgs.addAll(cMsgs);
-        adapter.notifyDataSetChanged();
-        name.setText(msg.name);
-        this.msg.setText("");
+        msg = (EditText)View.findViewById(R.id.sendmsg);
+        View.findViewById(R.id.send).setOnClickListener(this);
+        return View;
     }
     @Override
     public void onClick(View view) {
@@ -55,7 +44,6 @@ public class MsgFragment extends Fragment implements View.OnClickListener{
                 String msg = this.msg.getText().toString();
                 if(msg!=null&&msg!="") {
                     sMsgs.add(msg);
-                    cMsgs.add(msg);
                     adapter.notifyDataSetChanged();
                     this.msg.setText("");
                 }
